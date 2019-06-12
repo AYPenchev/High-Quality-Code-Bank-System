@@ -1,5 +1,4 @@
-﻿
-namespace BankSystemHQC
+﻿namespace BankSystemHQC
 {
     using System.Collections.Generic;
 
@@ -18,6 +17,7 @@ namespace BankSystemHQC
         }
 
         public List<BankAccount> CustomerBankAccounts { get; set; }
+
         protected string Name { get; set; }
 
         public decimal GetBalance()
@@ -34,7 +34,7 @@ namespace BankSystemHQC
 
         public override string ToString()
         {
-            string typesOfBankAccounts = GetAccountsType(this.CustomerBankAccounts);
+            string typesOfBankAccounts = this.GetAccountsType(this.CustomerBankAccounts);
 
             return "Name: " + this.Name + "\nBalance: " + this.GetBalance() + "\nCustomer Bank Accounts: " + typesOfBankAccounts;
         }
