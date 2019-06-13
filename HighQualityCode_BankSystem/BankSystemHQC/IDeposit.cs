@@ -1,6 +1,7 @@
 ﻿namespace BankSystemHQC
 {
-    interface IDeposit
+    public interface IDeposit
     {
+        void MakeDeposit(decimal depositAmount);
     }
 }
