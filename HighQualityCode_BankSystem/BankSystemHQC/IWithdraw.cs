@@ -1,6 +1,7 @@
 ﻿namespace BankSystemHQC
 {
-    interface IWithdraw
+    public interface IWithdraw
     {
+        void Withdraw(decimal withdrawAmount);
     }
 }
