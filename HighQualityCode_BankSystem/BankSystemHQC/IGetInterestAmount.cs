@@ -1,6 +1,7 @@
 ﻿namespace BankSystemHQC
 {
-    interface IGetInterestAmount
+    public interface IGetInterestAmount
     {
+        double GetInterestAmount(int numberOfMonths);
     }
 }
