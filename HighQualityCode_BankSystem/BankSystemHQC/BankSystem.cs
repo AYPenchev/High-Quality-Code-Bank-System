@@ -7,14 +7,14 @@
     {
         public static void Main()
         {
-            Deposit rbbDepositAccount = new Deposit();
-            Loan rbbLoanAccount = new Loan();
-            Mortgage rbbMortgageAccount = new Mortgage();
+            DepositAccount rbbDepositAccount = new DepositAccount();
+            LoanAccount rbbLoanAccount = new LoanAccount();
+            MortgageAccount rbbMortgageAccount = new MortgageAccount();
 
             Individual firsIndividualCustomer = new Individual("Ivan Petrov", "3232344565");
 
-            Deposit firstIndividualDeposit = new Deposit(firsIndividualCustomer, 1.5);
-            Mortgage firstIndividualMortgage = new Mortgage(firsIndividualCustomer, 2.5, 2000);
+            DepositAccount firstIndividualDeposit = new DepositAccount(firsIndividualCustomer, 1.5);
+            MortgageAccount firstIndividualMortgage = new MortgageAccount(firsIndividualCustomer, 2.5, 2000);
 
             List<BankAccount> firstIndividualAccounts = new List<BankAccount>()
             {
@@ -39,7 +39,7 @@
 
             Company telerik = new Company("Telerik", 234);
 
-            Loan telerikLoan = new Loan(telerik, 2.34, 5000);
+            LoanAccount telerikLoan = new LoanAccount(telerik, 2.34, 5000);
 
             List<BankAccount> telerikAccounts = new List<BankAccount>()
             {

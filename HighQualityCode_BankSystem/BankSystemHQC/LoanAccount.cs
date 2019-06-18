@@ -2,47 +2,47 @@
 {
     /// <summary>
     /// This class inherits from the base class BankAccount and implements interface IDeposit,
-    /// and represents Mortgage Bank Account used by Customers in the Bank. 
+    /// and represents Loan Bank Account used by Customers in the Bank. 
     /// </summary>
-    public class Mortgage : BankAccount, IDeposit
+    public class LoanAccount : BankAccount, IDeposit
     {
         /// <summary>
         /// This constant string represents the name of the account.
         /// </summary>
         // This variable will be used in several places when the system is further developed.
-        public const string MORTGAGE = "Mortgage";
+        public const string LOAN = "Loan";
 
         /// <summary>
-        /// This constant field shows the months with half interest for customer.
+        /// This constant field shows the months without interest for individual.
         /// </summary>
-        private const int MONTHS_WITH_HALF_INTEREST = 12;
+        private const int MONTHS_WITHOUT_INTEREST_INDIVIDUAL = 3;
 
         /// <summary>
-        /// This field is used on many places and that is why it is declared as constant.
+        /// This constant field shows the months without interest for company.
         /// </summary>
-        private const double HALF_INTEREST = 0.5;
+        private const int MONTHS_WITHOUT_INTEREST_COMPANY = 2;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Mortgage"/> class with information inherited by the base class.
+        /// Initializes a new instance of the <see cref="LoanAccount"/> class with information inherited by the base class.
         /// </summary>
-        public Mortgage() : base()
+        public LoanAccount() : base()
         {
 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Mortgage"/> class with customer using this account,
+        /// Initializes a new instance of the <see cref="LoanAccount"/> class with customer using this account,
         /// interest rate and due amount of money to be returned, inherited by the base class.
         /// </summary>
-        public Mortgage(Customer customer, double interestRate, decimal dueAmount) : base(customer, interestRate)
+        public LoanAccount(Customer customer, double interestRate, decimal dueAmount) : base(customer, interestRate)
         {
             this.DueAmount = dueAmount;
         }
 
         /// <summary>
-        /// Gets the name of the Mortgage account.
+        /// Gets the name of the Loan account.
         /// </summary>
-        public override string Name => MORTGAGE;
+        public override string Name => LOAN;
 
         /// <summary>
         /// This function is overriden to get the interest amount specifically for this type account.
@@ -52,22 +52,29 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
-            double interestAmount = 0;
-
-            if (numberOfMonths >= MONTHS_WITH_HALF_INTEREST)
+            if (this.Customer.GetType() == typeof(Individual).GetType())
             {
-                numberOfMonths -= MONTHS_WITH_HALF_INTEREST;
-                interestAmount = interestAmount + (MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate);
+                if (numberOfMonths >= MONTHS_WITHOUT_INTEREST_INDIVIDUAL)
+                {
+                    numberOfMonths -= MONTHS_WITHOUT_INTEREST_INDIVIDUAL;
+                }
+            }
+            else
+            {
+                if (numberOfMonths >= MONTHS_WITHOUT_INTEREST_COMPANY)
+                {
+                    numberOfMonths -= MONTHS_WITHOUT_INTEREST_COMPANY;
+                }
             }
 
-            interestAmount = interestAmount + (numberOfMonths * this.InterestRate);
+            double interestAmount = numberOfMonths * this.InterestRate;
             return interestAmount;
         }
 
         /// <summary>
         /// Implemented functionality from the interface IDeposit.
         /// </summary>
-        /// <param name="depositAmount">The amount of money which will be deposited in Mortgage account.</param>
+        /// <param name="depositAmount">The amount of money which will be deposited in Loan account.</param>
         public void MakeDeposit(decimal depositAmount)
         {
             this.CurrentAmount += depositAmount;

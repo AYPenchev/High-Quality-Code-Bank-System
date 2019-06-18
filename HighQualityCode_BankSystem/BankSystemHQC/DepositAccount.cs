@@ -4,7 +4,7 @@
     /// This class inherits from the base class BankAccount and implements two interfaces - IDeposit and IWithdraw,
     /// and represents Deposit Bank Account used by Customers in the Bank. 
     /// </summary>
-    public class Deposit : BankAccount, IDeposit, IWithdraw
+    public class DepositAccount : BankAccount, IDeposit, IWithdraw
     {
         /// <summary>
         /// This constant string represents the name of the account.
@@ -13,18 +13,18 @@
         public const string DEPOSIT = "Deposit";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Deposit"/> class with information inherited by the base class.
+        /// Initializes a new instance of the <see cref="DepositAccount"/> class with information inherited by the base class.
         /// </summary>
-        public Deposit() : base()
+        public DepositAccount() : base()
         {
 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Deposit"/> class with customer using this account,
+        /// Initializes a new instance of the <see cref="DepositAccount"/> class with customer using this account,
         /// interest rate and current amount of money of the bank account, inherited by the base class.
         /// </summary>
-        public Deposit(Customer customer, double interestRate, decimal currentAmount = 0) : base(customer, interestRate, currentAmount)
+        public DepositAccount(Customer customer, double interestRate, decimal currentAmount = 0) : base(customer, interestRate, currentAmount)
         {
 
         }

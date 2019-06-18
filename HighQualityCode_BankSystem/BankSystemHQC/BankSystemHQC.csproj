@@ -49,13 +49,13 @@
     <Compile Include="BankSystem.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="Deposit.cs" />
+    <Compile Include="DepositAccount.cs" />
     <Compile Include="IDeposit.cs" />
     <Compile Include="IGetInterestAmount.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="IWithdraw.cs" />
-    <Compile Include="Loan.cs" />
-    <Compile Include="Mortgage.cs" />
+    <Compile Include="LoanAccount.cs" />
+    <Compile Include="MortgageAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
