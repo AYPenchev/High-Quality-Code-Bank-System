@@ -17,6 +17,7 @@
         }
 
         public List<BankAccount> AccountTypes { get; set; }
+
         public string Name { get; set; }
     }
 }

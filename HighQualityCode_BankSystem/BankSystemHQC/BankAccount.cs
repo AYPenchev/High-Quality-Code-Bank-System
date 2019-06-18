@@ -20,11 +20,15 @@
             this.CurrentAmount = currentAmount;
         }
 
-        protected Customer Customer { get; set; }
-        protected double InterestRate { get; set; }
         public abstract string Name { get; }
+
         public decimal CurrentAmount { get; protected set; }
+
         public virtual decimal DueAmount { get; protected set; }
+
+        protected Customer Customer { get; set; }
+
+        protected double InterestRate { get; set; }
 
         public abstract double GetInterestAmount(int numberOfMonths);
     }

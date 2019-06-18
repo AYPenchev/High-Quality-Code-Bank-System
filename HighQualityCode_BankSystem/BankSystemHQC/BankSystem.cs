@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class BankAccounts
+    public class BankSystem
     {
         public static void Main()
         {
@@ -11,7 +11,6 @@
             Loan rbbLoanAccount = new Loan();
             Mortgage rbbMortgageAccount = new Mortgage();
 
-            //Individual
             Individual firsIndividualCustomer = new Individual("Ivan Petrov", "3232344565");
 
             Deposit firstIndividualDeposit = new Deposit(firsIndividualCustomer, 1.5);
@@ -38,7 +37,6 @@
             firstIndividualDeposit.Withdraw(3000);
             Console.WriteLine(firsIndividualCustomer.ToString());
 
-            //Company
             Company telerik = new Company("Telerik", 234);
 
             Loan telerikLoan = new Loan(telerik, 2.34, 5000);
