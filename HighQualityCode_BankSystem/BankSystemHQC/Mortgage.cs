@@ -25,9 +25,10 @@
             if (numberOfMonths >= MONTHS_WITH_HALF_INTEREST)
             {
                 numberOfMonths -= MONTHS_WITH_HALF_INTEREST;
-                interestAmount = interestAmount + MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate;
+                interestAmount = interestAmount + (MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate);
             }
-            interestAmount = interestAmount + numberOfMonths * this.InterestRate;
+
+            interestAmount = interestAmount + (numberOfMonths * this.InterestRate);
             return interestAmount;
         }
 
