@@ -52,6 +52,8 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
+            // These checks validate whether Individual or Company use the Loan Account
+            // and accordingly remove number of months from total months which are without interest rate.
             if (this.Customer.GetType() == typeof(Individual).GetType())
             {
                 if (numberOfMonths >= MONTHS_WITHOUT_INTEREST_INDIVIDUAL)

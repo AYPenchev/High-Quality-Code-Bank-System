@@ -53,14 +53,17 @@
         public override double GetInterestAmount(int numberOfMonths)
         {
             double interestAmount = 0;
-
+            
+            // When the month for interest amount are more than th number of month with half interest
+            // then we calculate separately months with normal interest and months with half interest
+            // and then combine them to receive the total interest amount.
             if (numberOfMonths >= MONTHS_WITH_HALF_INTEREST)
             {
                 numberOfMonths -= MONTHS_WITH_HALF_INTEREST;
-                interestAmount = interestAmount + (MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate);
+                interestAmount = interestAmount + (numberOfMonths * this.InterestRate);
             }
 
-            interestAmount = interestAmount + (numberOfMonths * this.InterestRate);
+            interestAmount = interestAmount + (MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate);
             return interestAmount;
         }
 

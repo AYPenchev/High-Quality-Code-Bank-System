@@ -42,6 +42,8 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
+            // These checks are to validate that the Balance is between 0 and 1000,
+            // so that it can calculate what the interest rate should be accordingly.
             if (this.Customer.GetBalance() > 0 && this.Customer.GetBalance() < 1000)
             {
                 return 0;
