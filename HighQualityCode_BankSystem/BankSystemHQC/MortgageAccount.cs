@@ -1,5 +1,7 @@
 ﻿namespace BankSystemHQC
 {
+    using System;
+
     /// <summary>
     /// This class inherits from the base class BankAccount and implements interface IDeposit,
     /// and represents Mortgage Bank Account used by Customers in the Bank. 
@@ -36,6 +38,11 @@
         /// </summary>
         public MortgageAccount(Customer customer, double interestRate, decimal dueAmount) : base(customer, interestRate)
         {
+            if (dueAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Due amount can't be less than zero!");
+            }
+
             this.DueAmount = dueAmount;
         }
 
@@ -52,6 +59,11 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
+            if (numberOfMonths < 0)
+            {
+                throw new ArgumentOutOfRangeException("Number of months can't be negative!");
+            }
+
             double interestAmount = 0;
             
             // When the month for interest amount are more than th number of month with half interest
@@ -64,6 +76,11 @@
             }
 
             interestAmount = interestAmount + (MONTHS_WITH_HALF_INTEREST * HALF_INTEREST * this.InterestRate);
+            if (interestAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Inavalid interest amount!");
+            }
+
             return interestAmount;
         }
 
@@ -73,6 +90,11 @@
         /// <param name="depositAmount">The amount of money which will be deposited in Mortgage account.</param>
         public void MakeDeposit(decimal depositAmount)
         {
+            if (depositAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("You can't deposit negative amount of money!");
+            }
+
             this.CurrentAmount += depositAmount;
         }
     }

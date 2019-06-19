@@ -1,5 +1,6 @@
 ﻿namespace BankSystemHQC
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -22,7 +23,7 @@
         /// </summary>
         protected Customer(string name, List<BankAccount> customerBankAccounts = null)
         {
-            this.Name = name;
+            this.Name = name ?? throw new ArgumentNullException("Invalid name");
             this.CustomerBankAccounts = customerBankAccounts;
         }
 
@@ -43,6 +44,11 @@
         public decimal GetBalance()
         {
             decimal allAccountsBalance = default(decimal);
+
+            if (this.CustomerBankAccounts == null)
+            {
+                throw new NullReferenceException("No bank accounts found. You must implement customer's bank accounts!");
+            }
 
             foreach (BankAccount account in this.CustomerBankAccounts)
             {
@@ -71,6 +77,11 @@
         private string GetAccountsType(List<BankAccount> accountsList)
         {
             string typesOfBankAccounts = string.Empty;
+
+            if (accountsList == null)
+            {
+                throw new NullReferenceException("No bank accounts found. You must implement customer's bank accounts!");
+            }
 
             foreach (BankAccount type in accountsList)
             {

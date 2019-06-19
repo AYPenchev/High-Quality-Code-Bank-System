@@ -1,4 +1,6 @@
-﻿namespace BankSystemHQC
+﻿using System;
+
+namespace BankSystemHQC
 {
     /// <summary>
     /// This class inherits from the base class BankAccount and implements interface IDeposit,
@@ -36,6 +38,11 @@
         /// </summary>
         public LoanAccount(Customer customer, double interestRate, decimal dueAmount) : base(customer, interestRate)
         {
+            if (dueAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Due amount can't be less than zero!");
+            }
+
             this.DueAmount = dueAmount;
         }
 
@@ -52,6 +59,11 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
+            if (numberOfMonths < 0)
+            {
+                throw new ArgumentOutOfRangeException("Number of months can't be negative!");
+            }
+
             // These checks validate whether Individual or Company use the Loan Account
             // and accordingly remove number of months from total months which are without interest rate.
             if (this.Customer.GetType() == typeof(Individual).GetType())
@@ -70,6 +82,11 @@
             }
 
             double interestAmount = numberOfMonths * this.InterestRate;
+            if (interestAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Inavalid interest amount!");
+            }
+
             return interestAmount;
         }
 
@@ -79,6 +96,11 @@
         /// <param name="depositAmount">The amount of money which will be deposited in Loan account.</param>
         public void MakeDeposit(decimal depositAmount)
         {
+            if (depositAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("You can't deposit negative amount of money!");
+            } 
+
             this.CurrentAmount += depositAmount;
         }
     }

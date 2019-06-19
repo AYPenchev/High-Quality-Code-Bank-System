@@ -1,12 +1,15 @@
 ﻿namespace BankSystemHQC
 {
     using System.Collections.Generic;
+    using System;
 
     /// <summary>
     /// This class inherits from the base class Customer, and represents Individual using Bank Accounts. 
     /// </summary>
     public class Individual : Customer
     {
+        private const int PERSONAL_ID_LENGTH = 10;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Individual"/> class with default parameters.
         /// </summary>
@@ -22,6 +25,10 @@
         public Individual(string name, string personalIDNumber, List<BankAccount> customerBankAccounts = null) :
                           base(name, customerBankAccounts)
         {
+            if (personalIDNumber.Length != PERSONAL_ID_LENGTH)
+            {
+                throw new FormatException("Registration number in Bulgaria has length of 8 symbols!");
+            }
             this.PersonalIDNumber = personalIDNumber;
         }
 

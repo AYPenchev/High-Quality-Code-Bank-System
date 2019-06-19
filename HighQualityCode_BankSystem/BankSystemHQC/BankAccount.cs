@@ -1,5 +1,7 @@
 ﻿namespace BankSystemHQC
 {
+    using System;
+
     /// <summary>
     /// This class implements the interface IGetInterestAmount because all Bank Accounts must have interest amount.
     /// </summary>
@@ -37,7 +39,12 @@
         /// <param name="currentAmount">This parameter has default value if such is not entered.</param>
         protected BankAccount(Customer customer, double interestRate, decimal currentAmount = 0)
         {
-            this.Customer = customer;
+            this.Customer = customer ?? throw new ArgumentNullException("Invalid Customer!");
+            if (interestRate < 0)
+            {
+                throw new ArgumentOutOfRangeException("Inavalid interest rate!");
+            }
+
             this.InterestRate = interestRate;
             this.CurrentAmount = currentAmount;
         }

@@ -37,7 +37,7 @@
             firstIndividualDeposit.Withdraw(3000);
             Console.WriteLine(firsIndividualCustomer.ToString());
 
-            Company telerik = new Company("Telerik", 234);
+            Company telerik = new Company("Telerik", "32460789");
 
             LoanAccount telerikLoan = new LoanAccount(telerik, 2.34, 5000);
 

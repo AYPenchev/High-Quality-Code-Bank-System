@@ -1,5 +1,7 @@
 ﻿namespace BankSystemHQC
 {
+    using System;
+
     /// <summary>
     /// This class inherits from the base class BankAccount and implements two interfaces - IDeposit and IWithdraw,
     /// and represents Deposit Bank Account used by Customers in the Bank. 
@@ -42,6 +44,11 @@
         /// <returns>Returns the interests amount for the entered period in months.</returns>
         public override double GetInterestAmount(int numberOfMonths)
         {
+            if (numberOfMonths < 0)
+            {
+                throw new ArgumentOutOfRangeException("Number of months can't be negative!");
+            }
+
             // These checks are to validate that the Balance is between 0 and 1000,
             // so that it can calculate what the interest rate should be accordingly.
             if (this.Customer.GetBalance() > 0 && this.Customer.GetBalance() < 1000)
@@ -50,6 +57,11 @@
             }
 
             double interestAmount = numberOfMonths * this.InterestRate;
+            if (interestAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Inavalid interest amount!");
+            }
+
             return interestAmount;
         }
 
@@ -59,6 +71,11 @@
         /// <param name="depositAmount">The amount of money which will be deposited in Deposit account.</param>
         public void MakeDeposit(decimal depositAmount)
         {
+            if (depositAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("You can't deposit negative amount of money!");
+            }
+
             this.CurrentAmount += depositAmount;
 
             if (depositAmount > DEPOSIT_LIMIT_WITHOUT_TAX)
@@ -73,7 +90,12 @@
         /// <param name="withdrawAmount">The amount of money which will be withdrawn from Deposit account</param>
         public void Withdraw(decimal withdrawAmount)
         {
-            this.CurrentAmount = this.CurrentAmount - (withdrawAmount + this.CalculatePercentageOf(withdrawAmount, WITHDRAW_PERCENT_TAX));
+            if (withdrawAmount < 0)
+            {
+                throw new ArgumentOutOfRangeException("You can't withdraw negative amount of money!");
+            }
+            this.CurrentAmount = this.CurrentAmount - (withdrawAmount + this.CalculatePercentageOf(withdrawAmount,
+                                                                                                   WITHDRAW_PERCENT_TAX));
         }
 
         /// <summary>
