@@ -22,3 +22,12 @@ bank accounts (Deposit account, Loan account, Mortgage account)
     1. Make deposit
     2. Get the interest rate for a given amount of months
     3. Get the balance of your account
+
+- Individuals and Companies have almost the same functionality 
+the difference is that Individual have personal ID number and
+Companies have company number
+
+In the project unit tests and exceptions are used to ensure
+that no mistakes happen, after all the system works with money.
+Also this project is build following OOP and SOLID principles
+and for version control git and gihub.
